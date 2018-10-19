@@ -28,13 +28,13 @@ TEST(initialisation_solutions) {
 
 TEST(initialisation_plateau) {
    int i, j;
-   int plateau[NB_LIGNES][NB_COLONNES];
+   int plateau[NB_LIGNES][NB_COLONNES+2];
 
    initialiser_plateau(plateau);
    // initialiser_plateau(plateau, NB_LIGNES, NB_COLONNES);
 
    for (i=0; i < NB_LIGNES; ++i)
-      for (j=0; j < NB_COLONNES; ++j)
+      for (j=0; j < NB_COLONNES+2; ++j)
          CHECK( 0 == plateau[i][j] )
 }
 
