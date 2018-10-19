@@ -9,6 +9,7 @@
    - compiler avec gcc *.c -g -Wall -Wextra -o executable
 */
 
+#define STRUCTURE
 
 BEGIN_TEST_GROUP(master)
 
@@ -37,7 +38,9 @@ TEST(initialisation_plateau) {
          CHECK( 0 == plateau[i][j] )
 }
 
-TEST(combinaison1) {
+#ifdef(STRUCTURE) // Version qui utilise une structure
+
+TEST(combinaison1a) {
    int solution = {1, 1, 1, 1};
    int proposition[NB_COLONNES] = { 2, 2, 2, 2};
    combinaison c;
@@ -67,7 +70,7 @@ TEST(combinaison1) {
    REQUIRE( 0 == c.malp );
 }
 
-TEST(combinaison2) {
+TEST(combinaison2a) {
    int solution = {3, 3, 1, 2};
    int proposition[NB_COLONNES] = { 4, 4, 4, 4};
    combinaison c;
@@ -106,6 +109,79 @@ TEST(combinaison2) {
    REQUIRE( 0 == c.malp  );
 }
 
+#else // Version qui ne fait pas appel aux structures
+
+TEST(combinaison1b) {
+   int solution = {1, 1, 1, 1};
+   int proposition[NB_COLONNES] = { 2, 2, 2, 2};
+   int bienp, malp;
+
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 0 == bienp );
+   REQUIRE( 0 == malp );
+
+   proposition[1] = 1;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 1 == bienp );
+   REQUIRE( 0 == malp );   
+
+   proposition[2] = 1;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 2 == bienp );
+   REQUIRE( 0 == malp );
+
+   proposition[3] = 1;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 3 == bienp );
+   REQUIRE( 0 == malp );
+
+   proposition[0] = 1;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 4 == bienp );
+   REQUIRE( 0 == malp );
+}
+
+TEST(combinaison2b) {
+   int solution = {3, 3, 1, 2};
+   int proposition[NB_COLONNES] = { 4, 4, 4, 4};
+   int bienp, malp;
+ 
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 0 == bienp );
+   REQUIRE( 0 == malp  );
+
+   proposition[0] = proposition[1] = proposition[2] = proposition[3] = 1;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 1 == bienp );
+   REQUIRE( 0 == malp  );   
+
+   proposition[0] = proposition[1] = 5;
+   proposition[2] = proposition[3] = 3;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 0 == bienp );
+   REQUIRE( 2 == malp  );
+
+   proposition[0] = 2; proposition[1] = 1;
+   proposition[2] = proposition[3] = 3;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 0 == bienp );
+   REQUIRE( 4 == malp  );
+
+   proposition[0] = proposition[1] = 3;
+   proposition[2] = 2; proposition[3] = 1;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 2 == bienp );
+   REQUIRE( 2 == malp  );
+
+   proposition[0] = proposition[1] = 3;
+   proposition[2] = 1; proposition[3] = 2;
+   compiler_proposition(proposition, solution, &bienp, &malp);
+   REQUIRE( 4 == bienp );
+   REQUIRE( 0 == malp  );
+}
+
+
+#endif
 
 END_TEST_GROUP(master)
 

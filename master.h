@@ -16,7 +16,7 @@ typedef struc {
 
 void initialiser_solution();
 void initialiser_plateau ();
-// void compiler_proposition();
+// void compiler_proposition(); // le prototype est a adapter
 // mettre ici les autres declarations
 
 #endif
