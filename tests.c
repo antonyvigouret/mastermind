@@ -9,7 +9,7 @@
    - compiler avec gcc *.c -g -Wall -Wextra -o executable
 */
 
-#define STRUCTURE
+#define STRUCTURE // mettre en commentaire si vous n'utilisez pas de structure
 
 BEGIN_TEST_GROUP(master)
 
@@ -38,7 +38,7 @@ TEST(initialisation_plateau) {
          CHECK( 0 == plateau[i][j] )
 }
 
-#ifdef(STRUCTURE) // Version qui utilise une structure
+#ifdef STRUCTURE // Version qui utilise une structure
 
 TEST(combinaison1a) {
    int solution = {1, 1, 1, 1};
