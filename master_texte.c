@@ -7,17 +7,33 @@
 
 
 int main(){
-    int sol[NB_COLONNES];
+    int gagner = 0;
+    int i = 0;
+    int solution[NB_COLONNES];
     int plateau[NB_LIGNES][6];
-
-    initialiser_solution(sol);
+    int proposition[NB_COLONNES];
+    initialiser_solution(solution);
     initialiser_plateau(plateau);
+    printf("couleurs de 1 à %d\n\n", NB_COULEURS);
+    printf("solution : ");
+    for (int i = 0; i<4; i++){
+        printf("%d ", solution[i]);
+    }
+    printf("\n\n");
 
-    int proposition[] = {1, 2, 3, 4};
-    for (int i = 0; i < NB_COLONNES; i++) printf("%d ", proposition[i]);
+    while (!gagner && (i < 10)){
+        printf("tour %d\n", i);
+        saisir_proposition(proposition);
+        actualiser_plateau(plateau, proposition, solution, i);
 
-    combinaison c=compiler_proposition(proposition, sol);
-    printf("bien place : %d  mal place : %d\n", c.bienp, c.malp);
+        // gagner ?
+        if (compare(proposition, solution)){
+            gagner = 1;
+            printf("vous avez gagnez !");
+        }
+        i++;
+    }
+
 
 
     return 0;

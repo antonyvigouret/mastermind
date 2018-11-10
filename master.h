@@ -21,6 +21,9 @@ typedef struct {
 void initialiser_solution(int sol[]);
 void initialiser_plateau(int plateau[][6]);
 combinaison compiler_proposition(int proposition[], int solution[]);
+void actualiser_plateau(int plateau[][6], int proposition[],int solution[], int tour);
+void saisir_proposition(int proposition[]);
+int compare(int proposition[], int solution[]);
 // mettre ici les autres declarations
 
 #endif
