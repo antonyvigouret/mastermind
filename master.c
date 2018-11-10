@@ -49,7 +49,7 @@ void actualiser_plateau(int plateau[][6], int proposition[], int solution[], int
 int compare(int proposition[], int solution[]){
     int tmp = 0;
     for (int i = 0; i<4; i++){
-        if (proposition[i]=solution[i]) tmp++;
+        if ((proposition[i]==solution[i])) tmp++;
     }
     int win;
     win = (tmp == 4) ? 1 : 0;
@@ -58,12 +58,14 @@ int compare(int proposition[], int solution[]){
 
 // fonction saisie la proposition du joueur
 void saisir_proposition(int proposition[]){
-    char propositiontmp[NB_COLONNES+1];
+    int c;
     printf("veuillez saisir 4 couleurs\n");
-    fgets(propositiontmp, NB_COLONNES, stdin);
     for (int i = 0; i < NB_COLONNES; i++){
-        proposition[i] = atoi(propositiontmp+i);
+        c = getchar();
+        char c2 = (char)c;
+        proposition[i] = atoi(&c2);
     }
+    viderBuffer();
 }
 
 // calcul les couleurs bien/mal placées
@@ -79,7 +81,10 @@ combinaison compiler_proposition(int proposition[], int solution[]) {
         if (proposition[i] == soltmp[i]){
              resultat.bienp++;
              soltmp[i] = 0;
-        }else {
+        }
+    }
+    for (int i=0; i<NB_COLONNES; i++){
+        if  (soltmp[i]){
             for (int j=0; j<NB_COLONNES; j++){
                 if (proposition[i] == soltmp[j]) {
                     resultat.malp++;
@@ -90,3 +95,9 @@ combinaison compiler_proposition(int proposition[], int solution[]) {
     }
     return resultat;
 } 
+
+// vidage du buffer
+void viderBuffer(){
+    char c = 0;
+    while (c != '\n' && c != EOF) c=getchar();
+}

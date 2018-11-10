@@ -24,6 +24,7 @@ combinaison compiler_proposition(int proposition[], int solution[]);
 void actualiser_plateau(int plateau[][6], int proposition[],int solution[], int tour);
 void saisir_proposition(int proposition[]);
 int compare(int proposition[], int solution[]);
+void viderBuffer();
 // mettre ici les autres declarations
 
 #endif

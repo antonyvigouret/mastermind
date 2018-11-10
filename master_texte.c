@@ -15,10 +15,7 @@ int main(){
     initialiser_solution(solution);
     initialiser_plateau(plateau);
     printf("couleurs de 1 à %d\n\n", NB_COULEURS);
-    printf("solution : ");
-    for (int i = 0; i<4; i++){
-        printf("%d ", solution[i]);
-    }
+
     printf("\n\n");
 
     while (!gagner && (i < 10)){
