@@ -9,7 +9,7 @@
    - compiler avec gcc *.c -g -Wall -Wextra -o executable
 */
 
-//#define STRUCTURE // mettre en commentaire si vous n'utilisez pas de structure
+#define STRUCTURE // mettre en commentaire si vous n'utilisez pas de structure
 
 BEGIN_TEST_GROUP(master)
 
@@ -26,7 +26,7 @@ TEST(initialisation_solutions) {
    }
 }
 
-TEST(initialisation_plateau) {
+/*TEST(initialisation_plateau) {
    int i, j;
    int plateau[NB_LIGNES][NB_COLONNES+2];
 
@@ -35,7 +35,7 @@ TEST(initialisation_plateau) {
 
    for (i=0; i < NB_LIGNES; ++i)
       for (j=0; j < NB_COLONNES+2; ++j)
-         CHECK( 0 == plateau[i][j] )
+         CHECK( 0 == plateau[i][j] );
 }
 
 #ifdef STRUCTURE // Version qui utilise une structure
@@ -181,7 +181,7 @@ TEST(combinaison2b) {
 }
 
 
-#endif
+#endif*/
 
 END_TEST_GROUP(master)
 
