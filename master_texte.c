@@ -26,7 +26,7 @@ int main(){
         // gagner ?
         if (compare(proposition, solution)){
             gagner = 1;
-            printf("vous avez gagnez !");
+            printf("vous avez gagnez !\n");
         }
         i++;
     }
