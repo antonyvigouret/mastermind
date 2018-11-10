@@ -9,7 +9,7 @@
    - compiler avec gcc *.c -g -Wall -Wextra -o executable
 */
 
-#define STRUCTURE // mettre en commentaire si vous n'utilisez pas de structure
+//#define STRUCTURE // mettre en commentaire si vous n'utilisez pas de structure
 
 BEGIN_TEST_GROUP(master)
 

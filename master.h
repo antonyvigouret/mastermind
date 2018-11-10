@@ -8,7 +8,7 @@
 /* DECLARATION DES TYPES PERSONNELS */
 // et de leur typedef si besoin
 
-typedef struc {
+typedef struct {
 
 } combinaison;
 
