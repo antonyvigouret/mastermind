@@ -14,7 +14,7 @@ int main(){
     int proposition[NB_COLONNES];
     initialiser_solution(solution);
     initialiser_plateau(plateau);
-    printf("couleurs de 1 à %d\n\n", NB_COULEURS);
+    //printf("couleurs de 1 à %d\n\n", NB_COULEURS);
 
     printf("\n\n");
 

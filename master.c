@@ -33,9 +33,9 @@ void actualiser_plateau(int plateau[][6], int proposition[], int solution[], int
     for (int i = 0; i < NB_LIGNES; i++){
         printf("| ");
         for (int j = 0; j < 4; j++){
-            printf("%d ", plateau[i][j]);
+            printf("\033[%dm  ", plateau[i][j]+40);
         }
-        printf("|| ");
+        printf("\033[40m|| ");
         for (int j = 4; j < 6; j++){
             printf("%d ", plateau[i][j]);
         }
@@ -59,7 +59,7 @@ int compare(int proposition[], int solution[]){
 // fonction saisie la proposition du joueur
 void saisir_proposition(int proposition[]){
     int c;
-    printf("veuillez saisir 4 couleurs\n");
+    printf("veuillez saisir 4 couleurs (\033[41m1\033[40m \033[42m2\033[40m \033[43m3\033[40m \033[44m4\033[40m)\n");
     for (int i = 0; i < NB_COLONNES; i++){
         c = getchar();
         char c2 = (char)c;
