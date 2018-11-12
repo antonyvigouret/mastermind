@@ -87,7 +87,7 @@ combinaison compiler_proposition(int proposition[], int solution[]) {
         if  (soltmp[i]){
             for (int j=0; j<NB_COLONNES; j++){
                 if (proposition[i] == soltmp[j]) {
-                    soltmp[j] = 0;
+                    soltmp[j] = 5;
                     resultat.malp++;
                     break;
                 }
