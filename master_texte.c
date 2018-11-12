@@ -6,7 +6,9 @@
 
 
 
-int main(){
+int main(int argc, char *argv[]){
+
+
     int gagner = 0;
     int i = 0;
     int solution[NB_COLONNES];
@@ -25,7 +27,7 @@ int main(){
 
         // gagner ?
         if (compare(proposition, solution)){
-            gagner = 1 ;
+            gagner = 1;
             printf("vous avez gagnez !\n");
         }
         i++;
@@ -33,5 +35,5 @@ int main(){
 
 
 
-    return 0;
+    return EXIT_SUCCESS;
 }
